@@ -1,0 +1,9 @@
+.right-part{
+    display: inline-block;
+}
+label{
+    float: left;
+}
+.is-invalid {
+    border-color: red;
+}
