@@ -4,10 +4,17 @@
     background-color: #29487d;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
+.app-top-bar h1 {
+    color: white;
+    margin: 0;
+    margin-left: 100px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2em;
+}
 .navbar-nav{
     margin-right: 50px; 
 }
@@ -28,4 +35,23 @@ a {
 a:hover {
 opacity: 0.8;
 font-weight: normal;
+}
+table{
+    margin: 50px;
+    width: 450px;
+    height: 400px;
+    overflow-y: scroll;
+    display: block;
+    border-collapse: collapse;
+}
+tr{
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.search{
+    margin: 50px;
+}
+.ml-2{
+    border-radius: 4px;
 }

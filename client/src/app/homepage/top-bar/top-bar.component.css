@@ -54,12 +54,12 @@ label {
 }
 
 .container {
+    line-height: 1.5;
     width: 980px;
     margin: 0 auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 70px;
+    padding-bottom: 70px;
     display: block;
-    width: 980px;
     text-align: center;
 }
 
@@ -81,10 +81,22 @@ label {
 
 app-home-info {
     width:450px;
+    margin-right: 100px;
 }
 
 app-register-form {
     width: 530px;
+    margin-left: 100px;
+}
+
+app-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #29487d;
+    color: white;
+    text-align: center;
 }
 
 .login-form{

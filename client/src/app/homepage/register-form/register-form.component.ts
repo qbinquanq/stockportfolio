@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -17,6 +17,8 @@ export class RegisterFormComponent implements OnInit {
   submitted = false;
   loading = false;
   error: string;
+  
+  
   
   passwordMatchValidator(g: FormGroup){
     return g.controls.password.value !== g.controls.passwordConfirm.value ? { mismatch: true} : false
@@ -41,7 +43,7 @@ export class RegisterFormComponent implements OnInit {
   get f() { return this.userRegistrationForm.controls; }
   onSubmit() {
     this.submitted = true;
-
+    
     // stop here if form is invalid
     if (this.userRegistrationForm.invalid) {
         return;
@@ -60,7 +62,8 @@ export class RegisterFormComponent implements OnInit {
                 this.error = error;
                 window.alert(this.error)
                 this.loading = false;
-            });
+            }
+          );
     }
 
 }

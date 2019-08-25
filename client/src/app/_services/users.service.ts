@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap, retry } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
-import { LoginUser } from '../user'; 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,6 +40,7 @@ getAll() {
 }
 
 register(user) {
+  console.log('register method')
   return this.http.post("http://localhost:4200/users/register", user);
 }
 
