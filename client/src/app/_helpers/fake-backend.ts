@@ -40,7 +40,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
             users.push(user);
             localStorage.setItem('users', JSON.stringify(users));
-
+            console.log('fake-backend register phase');
             return ok();
         }
         
@@ -50,8 +50,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const { email, password } = body;
             
             const user = users.find(x => x.email === email && x.password === password);
-            console.log("fake-backends");
-            
+            console.log("fake-backends authenticate phase");
+            console.log(body)
             if (!user) return error('Username or password is incorrect');
             return ok({
                 id: user.id,
@@ -65,6 +65,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // helper functions
 
         function ok(body?) {
+            console.log("ok method")
+            console.log(body);
+            
             return of(new HttpResponse({ status: 200, body }))
         }
 

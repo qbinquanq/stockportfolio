@@ -1,8 +1,13 @@
 .left-part{
     display: inline-block;
-    vertical-align: top;
     margin-right: 15px;
+    vertical-align:  top;
 }
 h1{
     font-size: 28px;
+}
+
+img {
+    width: 200px;
+  height: auto;
 }
