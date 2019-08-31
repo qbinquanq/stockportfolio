@@ -4,25 +4,27 @@
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
-    <div class="search">
-        Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
-    </div>
+    
   <table class="table table-striped">
     <thead>
     <tr>
-      <th scope="col">Symbol</th>
-      <th scope="col">Name</th>
+      <th scope="col" class="table th">
+        <div class="search">
+          <input class="form-control ml-2 searchInput" type="search" [formControl]="filter"/>
+          <button class="SearchButton">Search</button>
+        </div>
+      </th>
+      <th scope="col"></th>
       
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let stock of stockLists$ | async; index as i">
+    <tr *ngFor="let stock of stockLists$ | async | slice:0:10; index as i" class="searchResult">
       <!--<th scope="row">{{ i + 1 }}</th> -->
       <td>
-        <!--<img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">-->
-        <ngb-highlight [result]="stock.symbol" [term]="filter.value"></ngb-highlight>
+        <ngb-highlight [result]="stock.symbol + '    '  +stock.name" [term]="filter.value"></ngb-highlight>
       </td>
-      <td><ngb-highlight [result]="stock.name" [term]="filter.value"></ngb-highlight></td>
+      <td></td>
       
     </tr>
     </tbody>

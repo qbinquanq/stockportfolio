@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Stock, StockList } from '../_stocklist/';
 import { DecimalPipe } from '@angular/common';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, startWith, debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -30,9 +30,8 @@ export class ProfileComponent implements OnInit {
               private formBuilder: FormBuilder, ){
     this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
     this.stockLists$ = this.filter.valueChanges.pipe(
-      debounceTime(1000),
       startWith(''),
-      map(text => this.search(text, pipe))
+      map(text => text ? this.search(text, pipe): [])
     );
     //if(!this.currentUser)
                   //this.router.navigate(['/']);
@@ -41,8 +40,8 @@ export class ProfileComponent implements OnInit {
   search(text: string, pipe: PipeTransform): Stock[] {
     return StockList.filter(stock => {
       const term = text.toLowerCase();
-      return stock.symbol.toLowerCase().includes(term)
-          || stock.name.toLowerCase().includes(term);
+      return ((stock.symbol.toLowerCase().includes(term)
+          || stock.name.toLowerCase().includes(term)));
     });
   }
   logout(){
@@ -51,7 +50,5 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
-
 }
