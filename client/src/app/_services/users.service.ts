@@ -41,7 +41,7 @@ getAll() {
 
 register(user) {
   console.log('register method')
-  return this.http.post("http://localhost:4200/users/register", user);
+  return this.http.post("http://localhost:4200/server/StockPortfolio/users/register", user);
 }
 
 delete(id) {
