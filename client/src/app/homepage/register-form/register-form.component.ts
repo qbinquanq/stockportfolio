@@ -60,6 +60,8 @@ export class RegisterFormComponent implements OnInit {
             },
             error => {
                 this.error = error;
+                if(this.error.includes("constraint [email_UNIQUE]; nested exception is org.hibernate.exception.ConstraintViolationException"))
+                  this.error = "This email is already being registered";
                 window.alert(this.error)
                 this.loading = false;
             }
