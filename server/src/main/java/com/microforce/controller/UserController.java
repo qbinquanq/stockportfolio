@@ -20,8 +20,24 @@ public class UserController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<HttpStatus> addNewUser(@RequestBody User user) {
-		System.out.print(user);
-		this.userService.saveAndFlush(user);	
+		
+		this.userService.saveNewUser(user);	
 		return ResponseEntity.ok(HttpStatus.OK);
 	}
+	
+	@PostMapping("/authenticate")
+	public ResponseEntity<?> userLogin(@RequestBody User user){
+		User getuser = this.userService.findUser(user.getEmail(), user.getPassword());
+		if(getuser == null) {
+			return new ResponseEntity<>(
+				"Email or Password is not valid",
+				HttpStatus.NOT_FOUND
+			);
+		}
+		getuser.setToken("fake-jwt-token");
+		return new ResponseEntity<>(
+				getuser, HttpStatus.OK
+		);
+	}
+	
 }

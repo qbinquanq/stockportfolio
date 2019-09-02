@@ -29,6 +29,15 @@ public class User {
 	@Transient
     private String passwordConfirm;
 
+	@Transient
+	private String token;
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String jWT) {
+		token = jWT;
+	}
 	public String getPasswordConfirm() {
 		return passwordConfirm;
 	}

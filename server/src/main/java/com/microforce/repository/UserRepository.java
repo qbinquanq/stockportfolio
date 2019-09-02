@@ -6,5 +6,6 @@ import com.microforce.models.User;
 
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	User findByEmail(String email);
+	User findUserByEmailAndPassword(String email, String password);
+	User getUserByEmailAndPassword(String email, String password);
 }
