@@ -11,9 +11,11 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 	
-	public void saveAndFlush(User user) {		
-		userRepo.save(user);
+	public void saveNewUser(User user) {		
+		userRepo.saveAndFlush(user);
 	}
 	
-	
+	public User findUser(String email, String password) {
+		return userRepo.getUserByEmailAndPassword(email, password);
+	}
 }
